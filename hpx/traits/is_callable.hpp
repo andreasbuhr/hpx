@@ -248,7 +248,7 @@ namespace hpx { namespace traits
         template <typename T, typename C>
         struct is_callable_impl<T, void(C)
             , typename util::always_void<
-                  decltype((boost::declval<C>()->*boost::declval<T>()))
+                  decltype(((*boost::declval<C>())*boost::declval<T>()))
               >::type
         > : boost::mpl::true_
         {};
@@ -264,8 +264,8 @@ namespace hpx { namespace traits
         template <typename T, typename C, typename... A>
         struct is_callable_impl<T, void(C, A...)
             , typename util::always_void<
-                  decltype((boost::declval<C>()
-                              ->*boost::declval<T>())(boost::declval<A>()...))
+                  decltype(((*boost::declval<C>())
+                              .*boost::declval<T>())(boost::declval<A>()...))
               >::type
         > : boost::mpl::true_
         {};
