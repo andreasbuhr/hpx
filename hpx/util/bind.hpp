@@ -58,7 +58,7 @@ namespace hpx { namespace util
             template <typename Env, typename T>
             struct eval
             {
-                typedef T& type;
+                typedef T type;
             };
 
             template <typename Env, typename T>
