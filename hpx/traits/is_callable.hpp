@@ -130,7 +130,7 @@ namespace hpx { namespace traits
                 BOOST_PP_ENUM_TRAILING_PARAMS(n, P)) const volatile;            \
             R operator()(C&                                                     \
                 BOOST_PP_ENUM_TRAILING_PARAMS(n, P)) const volatile;            \
-            R operator()(boost::reference_wrapper<C>                            \
+            R operator()(BOOST_RV_REF(C)                                        \
                 BOOST_PP_ENUM_TRAILING_PARAMS(n, P)) const volatile;            \
         };                                                                      \
                                                                                 \
@@ -148,7 +148,7 @@ namespace hpx { namespace traits
                 BOOST_PP_ENUM_TRAILING_PARAMS(n, P)) const volatile;            \
             R operator()(C const&                                               \
                 BOOST_PP_ENUM_TRAILING_PARAMS(n, P)) const volatile;            \
-            R operator()(boost::reference_wrapper<C const>                      \
+            R operator()(BOOST_RV_REF(C const)                                  \
                 BOOST_PP_ENUM_TRAILING_PARAMS(n, P)) const volatile;            \
         };                                                                      \
         /**/
