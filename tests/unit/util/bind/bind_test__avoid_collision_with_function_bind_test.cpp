@@ -488,8 +488,6 @@ void member_function_void_test()
     HPX_TEST( v.hash == 23558 );
 }
 
-float ff_1(float){return 0;}
-
 void nested_bind_test()
 {
     using namespace boost;
@@ -497,7 +495,7 @@ void nested_bind_test()
     int const x = 1;
     int const y = 2;
 
-    HPX_TEST( hpx::util::bind(ff_1, hpx::util::bind(f_1, placeholders::_1))(x) == 1L );
+    HPX_TEST( hpx::util::bind(f_1, hpx::util::bind(f_1, placeholders::_1))(x) == 1L );
     HPX_TEST( hpx::util::bind(f_1, hpx::util::bind(f_2, placeholders::_1, placeholders::_2))(x, y) == 21L );
     HPX_TEST( hpx::util::bind(f_2, hpx::util::bind(f_1, placeholders::_1), hpx::util::bind(f_1, placeholders::_1))(x) == 11L );
     HPX_TEST( hpx::util::bind(f_2, hpx::util::bind(f_1, placeholders::_1), hpx::util::bind(f_1, placeholders::_2))(x, y) == 21L );
