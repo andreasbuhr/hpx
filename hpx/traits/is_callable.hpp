@@ -240,7 +240,7 @@ namespace hpx { namespace traits
         > : boost::mpl::true_
         {};
 
-        template <typename T, typename C, typename... A>
+        template <typename T, typename... A>
         struct is_callable_impl<T, void(A...)
             , typename util::always_void<
                   decltype(boost::mem_fn(boost::declval<T>())(boost::declval<A>()...))
