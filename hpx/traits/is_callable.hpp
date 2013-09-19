@@ -217,6 +217,8 @@ namespace hpx { namespace traits
 
 #include <hpx/util/always_void.hpp>
 
+#include <boost/mem_fn.hpp>
+
 #include <boost/mpl/bool.hpp>
 
 #include <boost/utility/declval.hpp>
@@ -238,34 +240,10 @@ namespace hpx { namespace traits
         > : boost::mpl::true_
         {};
 
-        template <typename T, typename C>
-        struct is_callable_impl<T, void(C)
-            , typename util::always_void<
-                  decltype((boost::declval<C>().*boost::declval<T>()))
-              >::type
-        > : boost::mpl::true_
-        {};
-        template <typename T, typename C>
-        struct is_callable_impl<T, void(C)
-            , typename util::always_void<
-                  decltype(((*boost::declval<C>()).*boost::declval<T>()))
-              >::type
-        > : boost::mpl::true_
-        {};
-
         template <typename T, typename C, typename... A>
-        struct is_callable_impl<T, void(C, A...)
+        struct is_callable_impl<T, void(A...)
             , typename util::always_void<
-                  decltype((boost::declval<C>()
-                              .*boost::declval<T>())(boost::declval<A>()...))
-              >::type
-        > : boost::mpl::true_
-        {};
-        template <typename T, typename C, typename... A>
-        struct is_callable_impl<T, void(C, A...)
-            , typename util::always_void<
-                  decltype(((*boost::declval<C>())
-                              .*boost::declval<T>())(boost::declval<A>()...))
+                  decltype(boost::mem_fn(boost::declval<T>())(boost::declval<A>()...));
               >::type
         > : boost::mpl::true_
         {};
