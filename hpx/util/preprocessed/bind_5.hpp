@@ -20,11 +20,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0>
             struct bound1<F(), Arg0>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -33,11 +34,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0>
             struct bound1<F const(), Arg0>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -389,11 +391,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1>
             struct bound2<F(), Arg0 , Arg1>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -402,11 +405,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1>
             struct bound2<F const(), Arg0 , Arg1>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -758,11 +762,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2>
             struct bound3<F(), Arg0 , Arg1 , Arg2>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -771,11 +776,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2>
             struct bound3<F const(), Arg0 , Arg1 , Arg2>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -1127,11 +1133,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3>
             struct bound4<F(), Arg0 , Arg1 , Arg2 , Arg3>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -1140,11 +1147,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3>
             struct bound4<F const(), Arg0 , Arg1 , Arg2 , Arg3>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -1496,11 +1504,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4>
             struct bound5<F(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -1509,11 +1518,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4>
             struct bound5<F const(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -1865,11 +1875,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4 , typename Arg5>
             struct bound6<F(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4 , Arg5>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type , typename result_of::eval< _, Arg5>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type , typename result_of::eval< env_type, Arg5>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type , typename result_of::eval< _, Arg5>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type , typename result_of::eval< env_type, Arg5>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -1878,11 +1889,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4 , typename Arg5>
             struct bound6<F const(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4 , Arg5>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type , typename result_of::eval< _, Arg5 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type , typename result_of::eval< env_type, Arg5 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type , typename result_of::eval< _, Arg5 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type , typename result_of::eval< env_type, Arg5 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -2234,11 +2246,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4 , typename Arg5 , typename Arg6>
             struct bound7<F(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4 , Arg5 , Arg6>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type , typename result_of::eval< _, Arg5>::type , typename result_of::eval< _, Arg6>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type , typename result_of::eval< env_type, Arg5>::type , typename result_of::eval< env_type, Arg6>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type , typename result_of::eval< _, Arg5>::type , typename result_of::eval< _, Arg6>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type , typename result_of::eval< env_type, Arg5>::type , typename result_of::eval< env_type, Arg6>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -2247,11 +2260,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4 , typename Arg5 , typename Arg6>
             struct bound7<F const(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4 , Arg5 , Arg6>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type , typename result_of::eval< _, Arg5 const>::type , typename result_of::eval< _, Arg6 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type , typename result_of::eval< env_type, Arg5 const>::type , typename result_of::eval< env_type, Arg6 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type , typename result_of::eval< _, Arg5 const>::type , typename result_of::eval< _, Arg6 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type , typename result_of::eval< env_type, Arg5 const>::type , typename result_of::eval< env_type, Arg6 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -2603,11 +2617,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4 , typename Arg5 , typename Arg6 , typename Arg7>
             struct bound8<F(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4 , Arg5 , Arg6 , Arg7>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type , typename result_of::eval< _, Arg5>::type , typename result_of::eval< _, Arg6>::type , typename result_of::eval< _, Arg7>::type>
+                        traits::is_callable<F, typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type , typename result_of::eval< env_type, Arg5>::type , typename result_of::eval< env_type, Arg6>::type , typename result_of::eval< env_type, Arg7>::type>
                       , util::invoke_result_of<
-                            F(typename result_of::eval< _, Arg0>::type , typename result_of::eval< _, Arg1>::type , typename result_of::eval< _, Arg2>::type , typename result_of::eval< _, Arg3>::type , typename result_of::eval< _, Arg4>::type , typename result_of::eval< _, Arg5>::type , typename result_of::eval< _, Arg6>::type , typename result_of::eval< _, Arg7>::type)
+                            F(typename result_of::eval< env_type, Arg0>::type , typename result_of::eval< env_type, Arg1>::type , typename result_of::eval< env_type, Arg2>::type , typename result_of::eval< env_type, Arg3>::type , typename result_of::eval< env_type, Arg4>::type , typename result_of::eval< env_type, Arg5>::type , typename result_of::eval< env_type, Arg6>::type , typename result_of::eval< env_type, Arg7>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -2616,11 +2631,12 @@ namespace hpx { namespace util
             template <typename F, typename Arg0 , typename Arg1 , typename Arg2 , typename Arg3 , typename Arg4 , typename Arg5 , typename Arg6 , typename Arg7>
             struct bound8<F const(), Arg0 , Arg1 , Arg2 , Arg3 , Arg4 , Arg5 , Arg6 , Arg7>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type , typename result_of::eval< _, Arg5 const>::type , typename result_of::eval< _, Arg6 const>::type , typename result_of::eval< _, Arg7 const>::type>
+                        traits::is_callable<F const, typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type , typename result_of::eval< env_type, Arg5 const>::type , typename result_of::eval< env_type, Arg6 const>::type , typename result_of::eval< env_type, Arg7 const>::type>
                       , util::invoke_result_of<
-                            F const(typename result_of::eval< _, Arg0 const>::type , typename result_of::eval< _, Arg1 const>::type , typename result_of::eval< _, Arg2 const>::type , typename result_of::eval< _, Arg3 const>::type , typename result_of::eval< _, Arg4 const>::type , typename result_of::eval< _, Arg5 const>::type , typename result_of::eval< _, Arg6 const>::type , typename result_of::eval< _, Arg7 const>::type)
+                            F const(typename result_of::eval< env_type, Arg0 const>::type , typename result_of::eval< env_type, Arg1 const>::type , typename result_of::eval< env_type, Arg2 const>::type , typename result_of::eval< env_type, Arg3 const>::type , typename result_of::eval< env_type, Arg4 const>::type , typename result_of::eval< env_type, Arg5 const>::type , typename result_of::eval< env_type, Arg6 const>::type , typename result_of::eval< env_type, Arg7 const>::type)
                         >
                       , boost::mpl::identity<not_callable>
                     >::type

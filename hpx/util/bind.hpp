@@ -682,11 +682,12 @@ namespace hpx { namespace util
             template <typename F, BOOST_PP_ENUM_PARAMS(N, typename Arg)>
             struct BOOST_PP_CAT(bound, N)<F(), BOOST_PP_ENUM_PARAMS(N, Arg)>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F, BOOST_PP_ENUM(N, HPX_UTIL_BIND_EVAL_TYPE, _)>
+                        traits::is_callable<F, BOOST_PP_ENUM(N, HPX_UTIL_BIND_EVAL_TYPE, env_type)>
                       , util::invoke_result_of<
-                            F(BOOST_PP_ENUM(N, HPX_UTIL_BIND_EVAL_TYPE, _))
+                            F(BOOST_PP_ENUM(N, HPX_UTIL_BIND_EVAL_TYPE, env_type))
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
@@ -696,11 +697,12 @@ namespace hpx { namespace util
             template <typename F, BOOST_PP_ENUM_PARAMS(N, typename Arg)>
             struct BOOST_PP_CAT(bound, N)<F const(), BOOST_PP_ENUM_PARAMS(N, Arg)>
             {
+                typedef hpx::util::tuple<> env_type;
                 typedef
                     typename boost::mpl::eval_if<
-                        traits::is_callable<F const, BOOST_PP_ENUM(N, HPX_UTIL_BIND_CONST_EVAL_TYPE, _)>
+                        traits::is_callable<F const, BOOST_PP_ENUM(N, HPX_UTIL_BIND_CONST_EVAL_TYPE, env_type)>
                       , util::invoke_result_of<
-                            F const(BOOST_PP_ENUM(N, HPX_UTIL_BIND_CONST_EVAL_TYPE, _))
+                            F const(BOOST_PP_ENUM(N, HPX_UTIL_BIND_CONST_EVAL_TYPE, env_type))
                         >
                       , boost::mpl::identity<not_callable>
                     >::type
