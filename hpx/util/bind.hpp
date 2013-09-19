@@ -212,11 +212,11 @@ namespace hpx { namespace util
     }
 
 #define HPX_UTIL_BIND_EVAL_TYPE(Z, N, D)                                        \
-    typename result_of::eval<hpx::util::tuple<>, BOOST_PP_CAT(Arg, N)>::type    \
+    typename result_of::eval<D, BOOST_PP_CAT(Arg, N)>::type                     \
 /**/
 
 #define HPX_UTIL_BIND_CONST_EVAL_TYPE(Z, N, D)                                  \
-    typename result_of::eval<hpx::util::tuple<>, BOOST_PP_CAT(Arg, N) const>::type\
+    typename result_of::eval<D, BOOST_PP_CAT(Arg, N) const>::type               \
 /**/
 
 #define HPX_UTIL_BIND_EVAL(Z, N, D)                                             \
@@ -589,8 +589,8 @@ namespace boost { namespace serialization
 #define HPX_UTIL_BIND_INIT_MEMBER(Z, N, D)                                      \
     BOOST_PP_CAT(arg, N)(boost::forward<BOOST_PP_CAT(A, N)>(BOOST_PP_CAT(a, N)))\
 /**/
-#define HPX_UTIL_BIND_MEMBER_TYPE(Z, NN, D)                                     \
-    BOOST_PP_CAT(Arg, NN)                                                       \
+#define HPX_UTIL_BIND_MEMBER_TYPE(Z, N, D)                                      \
+    BOOST_PP_CAT(Arg, N)                                                        \
 /**/
 #define HPX_UTIL_BIND_MEMBER(Z, N, D)                                           \
     typename decay<BOOST_PP_CAT(Arg, N)>::type BOOST_PP_CAT(arg, N);            \
@@ -617,12 +617,6 @@ namespace hpx { namespace util
 {
     namespace detail
     {
-#define HPX_UTIL_BIND_RESULT_OF_BOUND_ARGS(Z, NN, D)                            \
-    typename detail::result_of::eval<                                           \
-        HPX_UTIL_STRIP(D)                                                       \
-      , HPX_UTIL_BIND_MEMBER_TYPE(Z, NN, D)                                     \
-    >::type                                                                     \
-
         namespace result_of
         {
             template <typename F, BOOST_PP_ENUM_PARAMS(N, typename Arg)>
@@ -649,7 +643,7 @@ namespace hpx { namespace util
                         boost::mpl::vector<                                     \
                             BOOST_PP_ENUM(                                      \
                                 N                                               \
-                              , HPX_UTIL_BIND_RESULT_OF_BOUND_ARGS              \
+                              , HPX_UTIL_BIND_EVAL_TYPE                         \
                               , env_type                                        \
                             )                                                   \
                         >                                                       \
@@ -668,7 +662,7 @@ namespace hpx { namespace util
                             F(                                                  \
                                 BOOST_PP_ENUM(                                  \
                                     N                                           \
-                                  , HPX_UTIL_BIND_RESULT_OF_BOUND_ARGS          \
+                                  , HPX_UTIL_BIND_EVAL_TYPE                     \
                                   , env_type                                    \
                                 )                                               \
                             )                                                   \
