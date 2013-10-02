@@ -125,12 +125,23 @@ namespace hpx
     }
 
     /// The function \a when_any is a non-deterministic choice operator. It
-    /// OR-composes all future objects stored in the given vector and returns
-    /// a new future object representing the first future from that list which
+    /// OR-composes all future objects given and returns a new future object
+    /// representing the same list of futures after one future of that list
     /// finishes execution.
     ///
-    /// \return   The returned future holds the same list of futures as has
+    /// \note There are three variations of when_any. The first takes a pair
+    ///       of InputIterators. The second takes an std::vector of future<R>.
+    ///       The third takes any arbitrary number of future<R>, where R need
+    ///       not be the same type.
+    ///
+    /// \return   Returns a future holding the same list of futures as has
     ///           been passed to when_any.
+    ///           - future<vector<future<R>>>: If the input cardinality is
+    ///             unknown at compile time and the futures are all of the
+    ///             same type.
+    ///           - future<tuple<future<R0>, future<R1>, future<R2>...>>: If
+    ///             inputs are fixed in number and are of heterogeneous types.
+    ///             The inputs can be any arbitrary number of future objects.
 
     template <typename R>
     lcos::future<std::vector<lcos::future<R> > >
@@ -179,14 +190,21 @@ namespace hpx
         return lcos::make_ready_future(result_type());
     }
 
-    /// The function \a when_any_swapped is a non-deterministic choice operator. It
-    /// OR-composes all future objects stored in the given vector and returns
-    /// a new future object representing the first future from that list which
-    /// finishes execution.
+    /// The function \a when_any_swapped is a non-deterministic choice
+    /// operator. It OR-composes all future objects given and returns the same
+    /// list of futures after one future of that list finishes execution. The
+    /// future object that was first detected as being ready swaps its
+    /// position with that of the last element of the result collection, so
+    /// that the ready future object may be identified in constant time.
     ///
-    /// \return   The returned future holds the same list of futures as has
-    ///           been passed to when_any_swapped, except that the ready future
-    ///           has been swapped with the last one in the list.
+    /// \note There are two variations of when_any_swapped. The first takes
+    ///       a pair of InputIterators. The second takes an std::vector of
+    ///       future<R>.
+    ///
+    /// \return   The same list of futures as has been passed to
+    ///           when_any_swapped, where the future object that was first
+    ///           detected as being ready has swapped position with the last
+    ///           element in the list.
 
     template <typename R>
     lcos::future<std::vector<lcos::future<R> > >
@@ -237,13 +255,23 @@ namespace hpx
     }
 
     /// The function \a wait_any is a non-deterministic choice operator. It
-    /// OR-composes all future objects stored in the given vector and returns
-    /// a new future object representing the first future from that list which
-    /// finishes execution.
+    /// OR-composes all future objects given and returns the same list of
+    /// futures after one future of that list finishes execution.
     ///
-    /// \return   The returned tuple holds a pair of values, the first value
-    ///           is the index of the future which returned first and the second
-    ///           value represents the actual future which returned first.
+    /// \a wait_any returns after one future has been triggered.
+    ///
+    /// \note There are three variations of wait_any. The first takes a pair
+    ///       of InputIterators. The second takes an std::vector of future<R>.
+    ///       The third takes any arbitrary number of future<R>, where R need
+    ///       not be the same type.
+    ///
+    /// \return   The same list of futures as has been passed to wait_any.
+    ///           - future<vector<future<R>>>: If the input cardinality is
+    ///             unknown at compile time and the futures are all of the
+    ///             same type.
+    ///           - future<tuple<future<R0>, future<R1>, future<R2>...>>: If
+    ///             inputs are fixed in number and are of heterogeneous types.
+    ///             The inputs can be any arbitrary number of future objects.
 
     template <typename R>
     std::vector<lcos::future<R> >
